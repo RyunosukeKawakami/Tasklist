@@ -35,8 +35,8 @@ public class ShowServlet extends HttpServlet {
         Task m = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
         em.close();
 
-        request.setAttribute("message", m);
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/show.jsp");
+        request.setAttribute("task", m);
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/show.jsp");
         rd.forward(request, response);
     }
 }

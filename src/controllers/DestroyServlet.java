@@ -33,14 +33,14 @@ public class DestroyServlet extends HttpServlet {
         String _token = request.getParameter("_token");
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
-            Task m = em.find(Task.class, (Integer)(request.getSession().getAttribute("message_id")));
+            Task m = em.find(Task.class, (Integer)(request.getSession().getAttribute("task_id")));
 
             em.getTransaction().begin();
             em.remove(m);       // データ削除
             em.getTransaction().commit();
             em.close();
 
-            request.getSession().removeAttribute("message_id");
+            request.getSession().removeAttribute("task_id");
             response.sendRedirect(request.getContextPath() + "/index");
         }
     }
